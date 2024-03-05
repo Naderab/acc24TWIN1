@@ -8,7 +8,7 @@ const Header = React.lazy(() => import('./components/Header'))
 const Products = React.lazy(() => import('./components/Products'))
 const Events = React.lazy(() => import('./components/Events'))
 const EventDetails = React.lazy(() => import('./components/EventDetails'))
-
+const FormEvent = React.lazy(() => import('./components/FormEvent'))
 function App() {
 
   const [show, setShow] = useState(true)
@@ -76,7 +76,8 @@ function App() {
         <Route path="/events">
           <Route index element={<Events />} />
           <Route path=":id/:title" element={<EventDetails/>}/>
-        </Route>
+          <Route path="add" element={<FormEvent/>}/>
+          </Route>
         <Route path="/products" element={<Products />} />
             <Route path="/counter" element={<Counter />} />
             {/* </> */}

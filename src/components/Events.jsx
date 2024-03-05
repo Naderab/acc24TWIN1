@@ -1,20 +1,38 @@
 import Event from "./Event";
-import events from "../events.json"
+// import events from "../events.json"
 import { Alert, Col, Container, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { get } from "../services/eventServices";
 function Events() {
 
     const [showWelcome,setShowWelcome] = useState(true)
     const [searchParams, setSearchParams] = useSearchParams({});
+    const [events,setEvents] = useState([])
     useEffect(() => {
         console.log(searchParams.get("name"))
         console.log(searchParams.get("id"))
-
+        fetchEvents();
         setTimeout(() => {
             setShowWelcome(false)
         },3000)
-    },[])
+    }, [])
+    
+    const fetchEvents =async () => {
+        // get()
+        //     .then((result) => { setEvents(result.data); console.log(result) })
+        //     .catch((error)=>console.log(error))
+
+        try {
+            const result = await get();
+            setEvents(result.data)
+        } catch (error) {
+            console.log(error)
+        }
+        
+        //setEvents(result);
+        //console.log(result)
+    }
 
     const [show,setShow] = useState(false)
     const Buy = (event) => {
