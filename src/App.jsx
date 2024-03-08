@@ -4,6 +4,7 @@ import Counter from "./components/Counter";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Users from "./components/Users";
+import CounterRedux from "./components/CounterRedux";
 const Header = React.lazy(() => import('./components/Header'))
 const Products = React.lazy(() => import('./components/Products'))
 const Events = React.lazy(() => import('./components/Events'))
@@ -81,7 +82,8 @@ function App() {
         <Route path="/products" element={<Products />} />
             <Route path="/counter" element={<Counter />} />
             {/* </> */}
-        {/* )} */}
+          {/* )} */}
+          <Route path="/reduxcounter" element={<CounterRedux/>}/>
         <Route path="*" element={<h1>Not Found</h1>}/>
       </Routes>
       </Suspense>
