@@ -2,10 +2,13 @@ import { useFormik } from "formik";
 import { Button, Form } from "react-bootstrap";
 import { add } from "../services/eventServices";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addEvent } from "../redux/actions";
 
 function FormEvent() {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch();
     const f = useFormik({
         initialValues: {
             name: '',
@@ -18,7 +21,8 @@ function FormEvent() {
         },
         onSubmit: async (values) => {
             console.log(values)
-            await add(values)
+            const res = await add(values)
+            dispatch(addEvent(res.data))
             navigate('/events')
         }
     })

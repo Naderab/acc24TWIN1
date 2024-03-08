@@ -26,6 +26,8 @@ function Event(props) {
                 </Card.Text>
                 <Button variant="primary" onClick={handleLike}>{msg}</Button>
                 <Button variant="primary" onClick={()=>props.Buy(event)} disabled={event.nbTickets == 0 ? true : false}>Book an event</Button>
+                <Button variant="primary" onClick={() => props.deleteE(event.id)} >Delete event</Button>
+
             </Card.Body>
         </Card>
     )
